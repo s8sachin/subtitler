@@ -2,6 +2,8 @@ import React, { Fragment } from 'react';
 import { render } from 'react-dom';
 import { AppContainer as ReactHotAppContainer } from 'react-hot-loader';
 import { history, configuredStore } from './store';
+
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './app.global.css';
 
 const store = configuredStore();
