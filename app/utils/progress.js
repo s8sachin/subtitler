@@ -1,5 +1,6 @@
 import request from 'request';
-import fs from 'fs';
+
+const fs = require('electron').remote.require('fs');
 
 export const downloadFile = (file_url, targetPath, onProgress) => {
   // Save variable to know progress

@@ -1,7 +1,5 @@
 import React, { useState, ChangeEvent, Fragment } from 'react';
 import * as OS from 'opensubtitles-api';
-import * as http from 'http';
-import * as fs from 'fs';
 
 import Button from 'react-bootstrap/Button';
 
