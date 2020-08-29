@@ -88,7 +88,7 @@ export default function Home(): JSX.Element {
       <Dropzone
         multiple={false}
         onDrop={onFileSelect}
-        accept="video/mp4,video/x-m4v,video/*"
+        accept="video/mp4,video/x-m4v,video/*,.mkv"
       >
         {({ getRootProps, getInputProps, isDragActive }) => (
           <section>
