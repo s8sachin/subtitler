@@ -94,7 +94,7 @@ export default function Home(): JSX.Element {
           <section>
             <div
               {...getRootProps()}
-              className="p-3 mt-3 w-100 cursor-pointer outline-0"
+              className="p-3 w-100 cursor-pointer outline-0"
             >
               <input {...getInputProps()} />
               {console.log(isDragActive, 'XXX')}

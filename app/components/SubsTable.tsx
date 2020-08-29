@@ -17,7 +17,7 @@ const SubsTable = ({
           hover
           // variant="dark"
           borderless
-          className="text-white"
+          className="text-white mb-0"
           size="sm"
           style={{ fontSize: 15 }}
         >
