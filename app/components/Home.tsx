@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 import * as OS from 'opensubtitles-api';
 import Dropzone from 'react-dropzone';
 import Button from 'react-bootstrap/Button';
-
 import { Row, Col } from 'react-bootstrap';
 import { shell } from 'electron';
+
 import routes from '../constants/routes.json';
 import { downloadFile } from '../utils/progress';
 import SubsTable from './SubsTable';
@@ -90,22 +90,32 @@ export default function Home(): JSX.Element {
         onDrop={onFileSelect}
         accept="video/mp4,video/x-m4v,video/*"
       >
-        {({ getRootProps, getInputProps }) => (
+        {({ getRootProps, getInputProps, isDragActive }) => (
           <section>
             <div
               {...getRootProps()}
               className="p-3 mt-3 w-100 cursor-pointer outline-0"
             >
               <input {...getInputProps()} />
+              {console.log(isDragActive, 'XXX')}
               <div className="d-flex">
                 <div className="mr-3">
                   <Logo color="#8090b380" />
                 </div>
                 <div className="my-1 h3 justify-content-center align-items-center d-flex px-5 dnd-area w-100">
-                  Drag and drop your video file here or
-                  <Button className="ml-3 outline-0" variant="customDarkBlue">
-                    + Pick a file
-                  </Button>
+                  {isDragActive ? (
+                    <>Yup! Drop it like its hot 🔥</>
+                  ) : (
+                    <>
+                      Drag and drop your video file here or
+                      <Button
+                        className="ml-3 outline-0"
+                        variant="customDarkBlue"
+                      >
+                        + Pick a file
+                      </Button>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
