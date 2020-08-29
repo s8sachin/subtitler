@@ -85,55 +85,57 @@ export default function Home(): JSX.Element {
 
   return (
     <div className="container">
-      <Dropzone
-        multiple={false}
-        onDrop={onFileSelect}
-        accept="video/mp4,video/x-m4v,video/*,.mkv"
-      >
-        {({ getRootProps, getInputProps, isDragActive }) => (
-          <section>
-            <div
-              {...getRootProps()}
-              className="p-3 w-100 cursor-pointer outline-0"
-            >
-              <input {...getInputProps()} />
-              {console.log(isDragActive, 'XXX')}
-              <div className="d-flex">
-                <div className="mr-3">
-                  <Logo color="#8090b380" />
-                </div>
-                <div className="my-1 h3 justify-content-center align-items-center d-flex px-5 dnd-area w-100">
-                  {isDragActive ? (
-                    <>Yup! Drop it like its hot 🔥</>
-                  ) : (
-                    <>
-                      Drag and drop your video file here or
-                      <Button
-                        className="ml-3 outline-0"
-                        variant="customDarkBlue"
-                      >
-                        + Pick a file
-                      </Button>
-                    </>
-                  )}
+      <Row>
+        <Dropzone
+          multiple={false}
+          onDrop={onFileSelect}
+          accept="video/mp4,video/x-m4v,video/*,.mkv"
+        >
+          {({ getRootProps, getInputProps, isDragActive }) => (
+            <>
+              <div
+                {...getRootProps()}
+                className="p-3 w-100 cursor-pointer outline-0"
+              >
+                <input {...getInputProps()} />
+                {console.log(isDragActive, 'XXX')}
+                <div className="d-flex">
+                  <div className="mr-3">
+                    <Logo color="#8090b380" />
+                  </div>
+                  <div className="my-1 h3 justify-content-center align-items-center d-flex px-5 dnd-area w-100">
+                    {isDragActive ? (
+                      <>Yup! Drop it like its hot 🔥</>
+                    ) : (
+                      <>
+                        Drag and drop your video file here or
+                        <Button
+                          className="ml-3 outline-0"
+                          variant="customDarkBlue"
+                        >
+                          + Pick a file
+                        </Button>
+                      </>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-          </section>
-        )}
-      </Dropzone>
-      <div>
+            </>
+          )}
+        </Dropzone>
+      </Row>
+      <>
         {searchResp && selecedFile && (
           <>
             <Row>
-              <Col xs={9}>
+              <Col style={{ minWidth: 'calc(100% - 210px)' }}>
                 <h4 className="text-truncate mb-3" title={selecedFile.name}>
                   {selecedFile.name}
                 </h4>
                 <SubsTable listData={searchResp} onSelection={onSelection} />
               </Col>
-              <Col xs={3} style={{ height: '70vh', overflowY: 'auto' }}>
-                <div style={{ width: 180 }} className="mx-auto overflow-scroll">
+              <Col style={{ height: '70vh', overflowY: 'auto' }}>
+                <div style={{ width: 180 }} className="overflow-y-scroll">
                   <img
                     className="img-fluid rounded-top cursor-pointer"
                     src={titleInfo.metadata.cover}
@@ -170,7 +172,7 @@ export default function Home(): JSX.Element {
             </Row>
           </>
         )}
-      </div>
+      </>
     </div>
   );
 }

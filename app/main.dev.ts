@@ -62,6 +62,7 @@ const createWindow = async () => {
     height: 690,
     minWidth: 1024,
     minHeight: 690,
+    backgroundColor: '#232c39',
     webPreferences:
       (process.env.NODE_ENV === 'development' ||
         process.env.E2E_BUILD === 'true') &&
