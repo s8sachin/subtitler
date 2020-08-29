@@ -1,19 +1,20 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState, ChangeEvent, Fragment } from 'react';
+import React, { useState } from 'react';
 import * as OS from 'opensubtitles-api';
 import Dropzone from 'react-dropzone';
 import Button from 'react-bootstrap/Button';
 
-import { Link } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
 import { shell } from 'electron';
 import routes from '../constants/routes.json';
-import styles from './Home.css';
 import { downloadFile } from '../utils/progress';
 import SubsTable from './SubsTable';
 import Logo from './Icons/Logo';
 
 const OpenSubtitles = new OS({ useragent: 'UserAgent', ssl: true });
+
+const gotoImdb = () =>
+  shell.openExternal(`https://www.imdb.com/title/${titleInfo.metadata.imdbid}`);
 
 export default function Home(): JSX.Element {
   const [selecedFile, setSelectedFile] = useState<File | null>(null);
@@ -111,7 +112,6 @@ export default function Home(): JSX.Element {
           </section>
         )}
       </Dropzone>
-      {console.log(selecedFile)}
       <div>
         {searchResp && selecedFile && (
           <>
@@ -133,10 +133,7 @@ export default function Home(): JSX.Element {
                   <div
                     className="py-1 rounded-bottom text-center w-100 bg-customLightBlue cursor-pointer"
                     role="presentation"
-                    onClick={() =>
-                      shell.openExternal(
-                        `https://www.imdb.com/title/${titleInfo.metadata.imdbid}`
-                      )}
+                    onClick={gotoImdb}
                   >
                     {`IMDb Rating: ${titleInfo.metadata.rating}/10`}
                   </div>

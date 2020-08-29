@@ -12,6 +12,7 @@ body {
   color: white !important;
   height: 100vh;
   background-color: #232c39 !important;
+
   /* background-color: #2E2F30 !important; */
 
   /* background-image: linear-gradient(
@@ -60,11 +61,11 @@ a:hover {
 }
 
 .bg-customDarkBlue {
-  background-color: #425B92;
+  background-color: #425b92;
 }
 
 .border-customDarkBlue {
-  border: 1px solid #425B92;
+  border: 1px solid #425b92;
 }
 
 .cursor-pointer {
@@ -81,12 +82,9 @@ a:hover {
   outline: 0 !important;
 }
 
-.table-striped tbody tr:nth-of-type(odd) {
-  background-color: #425b926b !important;
-}
-
 .table-hover tbody tr {
   opacity: 1;
+
   /* border-left: '1px solid #425b92a8';
   border-right: '1px solid #425b92a8'; */
 }
@@ -94,16 +92,20 @@ a:hover {
 .table-hover tbody tr:hover {
   color: inherit !important;
   opacity: 0.8 !important;
-  background-color: rgba(0,0,0,.075);
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #425b926b !important;
 }
 
 .max-width-0 {
-  max-width: 0px;
+  max-width: 0;
 }
 
 .btn-customDarkBlue {
   color: inherit;
-  background-color: #425B92;
+  background-color: #425b92;
 }
 
 .btn-customDarkBlue:hover {
@@ -122,24 +124,27 @@ a:hover {
   height: 10px;
 } */
 
-
 /* width */
+
 /* ::-webkit-scrollbar {
   width: 9px !important;
 } */
 
 /* Track */
+
 /* ::-webkit-scrollbar-track {
   background: #f1f1f1 !important;
 } */
 
 /* Handle */
+
 /* ::-webkit-scrollbar-thumb {
   background: #888 !important;
   border-radius: 10px;
 } */
 
 /* Handle on hover */
+
 /* ::-webkit-scrollbar-thumb:hover {
   background: #555 !important;
 } */
