@@ -12,3 +12,7 @@
 .container a {
   font-size: 1.4rem;
 }
+
+/* .table-dark.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(66, 91, 146, 0.2) !important;
+} */

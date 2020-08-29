@@ -1,18 +1,24 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, ChangeEvent, Fragment } from 'react';
 import * as OS from 'opensubtitles-api';
-
+import Dropzone from 'react-dropzone';
 import Button from 'react-bootstrap/Button';
 
 import { Link } from 'react-router-dom';
+import { Row, Col } from 'react-bootstrap';
+import { shell } from 'electron';
 import routes from '../constants/routes.json';
 import styles from './Home.css';
 import { downloadFile } from '../utils/progress';
+import SubsTable from './SubsTable';
+import Logo from './Icons/Logo';
 
 const OpenSubtitles = new OS({ useragent: 'UserAgent', ssl: true });
 
 export default function Home(): JSX.Element {
   const [selecedFile, setSelectedFile] = useState<File | null>(null);
   const [searchResp, setSearchResp] = useState<any>(null);
+  const [titleInfo, setTitleDetails] = useState<any>({});
 
   const onProgress = (received: any, total: any) => {
     const percentage = (received * 100) / total;
@@ -29,8 +35,10 @@ export default function Home(): JSX.Element {
     downloadFile(selectedItem.url, destinationpath, onProgress);
   };
 
-  const onFileSelect = async (e: ChangeEvent<HTMLInputElement>) => {
-    const file: File | null = e.target.files && e.target.files[0];
+  /* e: ChangeEvent<HTMLInputElement> */
+  const onFileSelect = async (files: File[]) => {
+    // const file: File | null = e.target.files && e.target.files[0];
+    const file: File | null = files && files[0];
     try {
       if (file) {
         setSelectedFile(file);
@@ -51,7 +59,17 @@ export default function Home(): JSX.Element {
         };
 
         const resp = await OpenSubtitles.search(searchObj);
-        setSearchResp(resp);
+        const movieInfo = await OpenSubtitles.identify({
+          path: file.path,
+          extend: true,
+        });
+        setTitleDetails(movieInfo);
+        console.log(movieInfo, 'XXX');
+        const modifiedResp: any[] = [];
+        Object.keys(resp).forEach((lang) => {
+          modifiedResp.push(...resp[lang]);
+        });
+        setSearchResp(modifiedResp);
 
         // const newFile = fs.createWriteStream(selectedItem.filename);
         // const request = http.get(selectedItem.url, function (response) {
@@ -66,48 +84,83 @@ export default function Home(): JSX.Element {
 
   return (
     <div className="container">
-      <h2>Home</h2>
-      <input
-        type="file"
-        accept="video/mp4,video/x-m4v,video/*"
+      <Dropzone
         multiple={false}
-        onChange={onFileSelect}
-      />
-      <br />
+        onDrop={onFileSelect}
+        accept="video/mp4,video/x-m4v,video/*"
+      >
+        {({ getRootProps, getInputProps }) => (
+          <section>
+            <div
+              {...getRootProps()}
+              className="p-3 mt-3 w-100 cursor-pointer outline-0"
+            >
+              <input {...getInputProps()} />
+              <div className="d-flex">
+                <div className="mr-3">
+                  <Logo color="#8090b380" />
+                </div>
+                <div className="my-1 h3 justify-content-center align-items-center d-flex px-5 dnd-area w-100">
+                  Drag and drop your video file here or
+                  <Button className="ml-3 outline-0" variant="customDarkBlue">
+                    + Pick a file
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+      </Dropzone>
       {console.log(selecedFile)}
-      <div style={{ overflow: 'scroll', height: '100vh' }}>
-        {searchResp &&
-          Object.keys(searchResp).map((lang: any) => (
-            <Fragment key={lang}>
-              <h5>{`Language: ${lang}`}</h5>
-              <br />
-              {searchResp[lang].map((obj: any) => (
-                <Fragment key={obj.url}>
-                  <div className="d-flex justify-content-between">
+      <div>
+        {searchResp && selecedFile && (
+          <>
+            <Row>
+              <Col xs={9}>
+                <h4 className="text-truncate mb-3" title={selecedFile.name}>
+                  {selecedFile.name}
+                </h4>
+                <SubsTable listData={searchResp} onSelection={onSelection} />
+              </Col>
+              <Col xs={3} style={{ height: '70vh', overflowY: 'auto' }}>
+                <div style={{ width: 180 }} className="mx-auto overflow-scroll">
+                  <img
+                    className="img-fluid rounded-top"
+                    src={titleInfo.metadata.cover}
+                    alt=""
+                  />
+                  <br />
+                  <div
+                    className="py-1 rounded-bottom text-center w-100 bg-customLightBlue cursor-pointer"
+                    role="presentation"
+                    onClick={() =>
+                      shell.openExternal(
+                        `https://www.imdb.com/title/${titleInfo.metadata.imdbid}`
+                      )}
+                  >
+                    {`IMDb Rating: ${titleInfo.metadata.rating}/10`}
+                  </div>
+                  <div className="text-center my-1">
+                    {`${titleInfo.metadata.title} (${titleInfo.metadata.year})`}
+                  </div>
+                  <div style={{ fontSize: 13 }} className="my-1">
+                    <div>{`${titleInfo.metadata.duration}`}</div>
+                    <div>{`${titleInfo.metadata.tagline}`}</div>
                     <div>
-                      <span>{`Name: ${obj.filename}`}</span>
+                      <b className="">Starring:</b>
                       <br />
-                      <span>{`Downloads: ${obj.downloads}`}</span>
-                      <br />
-                      <span>{`Score: ${obj.score}`}</span>
-                      <br />
-                    </div>
-                    <div>
-                      <Button
-                        variant="primary"
-                        onClick={() => onSelection(obj)}
-                        size="sm"
-                        className="m-3"
-                      >
-                        Download
-                      </Button>
+                      <span className="font-weight-light text-light">
+                        {Object.values(titleInfo.metadata.cast)
+                          .slice(0, 5)
+                          .join(', ')}
+                      </span>
                     </div>
                   </div>
-                  <hr className="bg-white" />
-                </Fragment>
-              ))}
-            </Fragment>
-          ))}
+                </div>
+              </Col>
+            </Row>
+          </>
+        )}
       </div>
     </div>
   );
