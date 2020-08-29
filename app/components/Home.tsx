@@ -13,8 +13,8 @@ import Logo from './Icons/Logo';
 
 const OpenSubtitles = new OS({ useragent: 'UserAgent', ssl: true });
 
-const gotoImdb = () =>
-  shell.openExternal(`https://www.imdb.com/title/${titleInfo.metadata.imdbid}`);
+const gotoImdb = (imdbid: string) =>
+  shell.openExternal(`https://www.imdb.com/title/${imdbid}`);
 
 export default function Home(): JSX.Element {
   const [selecedFile, setSelectedFile] = useState<File | null>(null);
@@ -135,15 +135,17 @@ export default function Home(): JSX.Element {
               <Col xs={3} style={{ height: '70vh', overflowY: 'auto' }}>
                 <div style={{ width: 180 }} className="mx-auto overflow-scroll">
                   <img
-                    className="img-fluid rounded-top"
+                    className="img-fluid rounded-top cursor-pointer"
                     src={titleInfo.metadata.cover}
+                    role="presentation"
+                    onClick={() => gotoImdb(titleInfo.metadata.imdbid)}
                     alt=""
                   />
                   <br />
                   <div
                     className="py-1 rounded-bottom text-center w-100 bg-customLightBlue cursor-pointer"
                     role="presentation"
-                    onClick={gotoImdb}
+                    onClick={() => gotoImdb(titleInfo.metadata.imdbid)}
                   >
                     {`IMDb Rating: ${titleInfo.metadata.rating}/10`}
                   </div>
