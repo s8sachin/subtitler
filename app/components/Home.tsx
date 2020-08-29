@@ -32,7 +32,6 @@ export default function Home(): JSX.Element {
       selecedFile.name,
       `${selecedFile.name.split('.').slice(0, -1).join('.')}.srt`
     );
-    // console.log(selectedItem.url, 'XX');
     downloadFile(selectedItem.url, destinationpath, onProgress);
   };
 
@@ -98,7 +97,6 @@ export default function Home(): JSX.Element {
                 className="p-3 w-100 cursor-pointer outline-0"
               >
                 <input {...getInputProps()} />
-                {console.log(isDragActive, 'XXX')}
                 <div className="d-flex">
                   <div className="mr-3">
                     <Logo color="#8090b380" />
@@ -134,7 +132,7 @@ export default function Home(): JSX.Element {
                 </h4>
                 <SubsTable listData={searchResp} onSelection={onSelection} />
               </Col>
-              <Col style={{ height: '70vh', overflowY: 'auto' }}>
+              <Col style={{ height: '80vh', overflowY: 'auto' }}>
                 <div style={{ width: 180 }} className="overflow-y-scroll">
                   <img
                     className="img-fluid rounded-top cursor-pointer"
