@@ -77,6 +77,9 @@ a:hover {
   font-size: 12px;
   background-color: #425b92;
   color: white !important;
+}
+
+.bottom-nav-custom div {
   padding-top: 2px;
   padding-bottom: 2px;
 }
@@ -117,7 +120,7 @@ a:hover {
 .dnd-area {
   border: 2px dashed;
   box-sizing: border-box;
-  border-radius: 25px;
+  border-radius: 15px;
 }
 
 .outline-0 {
@@ -131,7 +134,7 @@ a:hover {
   border-right: '1px solid #425b92a8'; */
 }
 
-.table-hover tbody tr:hover {
+.table-hover .tr-hover:hover {
   color: inherit !important;
   opacity: 0.8 !important;
   background-color: rgba(0, 0, 0, 0.075);

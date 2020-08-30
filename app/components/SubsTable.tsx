@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Table } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import Skeleton from 'react-loading-skeleton';
 import { sortAsc, sortDesc } from '../utils/sortHelper';
 import SubsTableHeadCol from './SubsTableHeaderCol';
 
@@ -26,9 +27,11 @@ const tableHeadersList = [
 const SubsTable = ({
   listData,
   onSelection,
+  isLoading,
 }: {
   listData: any[];
   onSelection: any;
+  isLoading: boolean;
 }) => {
   const [sortOpts, setSortOpts] = useState({
     sortKey: 'lang',
@@ -78,23 +81,37 @@ const SubsTable = ({
             </tr>
           </thead>
           <tbody className="mt-2" style={{ border: '1px solid #425b92a8' }}>
-            {sortedList.map((subObj) => (
-              <tr
-                key={subObj.id}
-                onClick={() => onSelection(subObj)}
-                className="cursor-pointer"
-                title={`${subObj.filename} | Click to download`}
-              >
-                <td className="max-width-0 w-100 text-truncate">
-                  {subObj.filename}
-                </td>
-                <td className="max-width-0 text-truncate">
-                  {subObj.downloads}
-                </td>
-                <td className="max-width-0 text-truncate">{subObj.score}</td>
-                <td className="max-width-0 text-truncate">{subObj.lang}</td>
-              </tr>
-            ))}
+            {isLoading && (
+              <>
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map((num) => (
+                  <tr key={num} style={{ opacity: 0.8 }}>
+                    {[1, 2, 3, 4].map((it) => (
+                      <td key={it} className="w-100">
+                        <Skeleton />
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </>
+            )}
+            {!isLoading &&
+              sortedList.map((subObj) => (
+                <tr
+                  key={subObj.id}
+                  onClick={() => onSelection(subObj)}
+                  className="cursor-pointer tr-hover"
+                  title={`${subObj.filename} | Click to download`}
+                >
+                  <td className="max-width-0 w-100 text-truncate">
+                    {subObj.filename}
+                  </td>
+                  <td className="max-width-0 text-truncate">
+                    {subObj.downloads}
+                  </td>
+                  <td className="max-width-0 text-truncate">{subObj.score}</td>
+                  <td className="max-width-0 text-truncate">{subObj.lang}</td>
+                </tr>
+              ))}
           </tbody>
         </Table>
       </div>
@@ -105,11 +122,13 @@ const SubsTable = ({
 SubsTable.propTypes = {
   listData: PropTypes.arrayOf(PropTypes.object),
   onSelection: PropTypes.func,
+  isLoading: PropTypes.bool,
 };
 
 SubsTable.defaultProps = {
   listData: [],
   onSelection: () => {},
+  isLoading: true,
 };
 
 export default SubsTable;

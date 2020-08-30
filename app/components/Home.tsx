@@ -15,7 +15,8 @@ const OpenSubtitles = new OS({ useragent: 'UserAgent', ssl: true });
 
 export default function Home(): JSX.Element {
   const [selecedFile, setSelectedFile] = useState<File | null>(null);
-  const [searchResp, setSearchResp] = useState<any>(null);
+  const [searchResp, setSearchResp] = useState<any>([]);
+  const [isLoading, setIsLoading] = useState<any>(false);
   const [titleInfo, setTitleDetails] = useState<any>({});
 
   const onProgress = (received: any, total: any) => {
@@ -36,6 +37,7 @@ export default function Home(): JSX.Element {
   const onFileSelect = async (files: File[]) => {
     // const file: File | null = e.target.files && e.target.files[0];
     const file: File | null = files && files[0];
+    setIsLoading(true);
     try {
       if (file) {
         setSelectedFile(file);
@@ -67,6 +69,7 @@ export default function Home(): JSX.Element {
           modifiedResp.push(...resp[lang]);
         });
         setSearchResp(modifiedResp);
+        setIsLoading(false);
 
         // const newFile = fs.createWriteStream(selectedItem.filename);
         // const request = http.get(selectedItem.url, function (response) {
@@ -74,12 +77,14 @@ export default function Home(): JSX.Element {
         // });
       }
     } catch (err) {
+      setIsLoading(false);
       console.error(err);
     }
   };
 
   return (
     <div className="container">
+      {console.log(isLoading, 'isLoading')}
       <Row>
         <Dropzone
           multiple={false}
@@ -120,17 +125,23 @@ export default function Home(): JSX.Element {
         </Dropzone>
       </Row>
       <>
-        {searchResp && selecedFile && (
+        {selecedFile && (
           <>
             <Row>
               <Col style={{ minWidth: 'calc(100% - 210px)' }}>
                 <h4 className="text-truncate mb-3" title={selecedFile.name}>
                   {selecedFile.name}
                 </h4>
-                <SubsTable listData={searchResp} onSelection={onSelection} />
+                <SubsTable
+                  isLoading={isLoading}
+                  listData={searchResp}
+                  onSelection={onSelection}
+                />
               </Col>
               <Col style={{ height: '80vh', overflowY: 'auto' }}>
-                <MovieInfo titleInfo={titleInfo} />
+                {searchResp && titleInfo.metadata && (
+                  <MovieInfo titleInfo={titleInfo} />
+                )}
               </Col>
             </Row>
           </>
