@@ -10,7 +10,7 @@ const MovieInfo = ({ titleInfo }: { titleInfo: any }) => {
   return (
     <div style={{ width: 180 }} className="overflow-y-scroll">
       <img
-        className="img-fluid rounded-top cursor-pointer"
+        className="img-fluid rounded-top cursor-pointer border-customDarkBlue"
         src={metadata.cover}
         role="presentation"
         onClick={() => gotoImdb(metadata.show_imdbid || metadata.imdbid)}
