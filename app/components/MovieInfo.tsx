@@ -1,40 +1,69 @@
 import React from 'react';
 import { shell } from 'electron';
+import { Button } from 'react-bootstrap';
 
 const gotoImdb = (imdbid: string) =>
   shell.openExternal(`https://www.imdb.com/title/${imdbid}`);
 
 const MovieInfo = ({ titleInfo }: { titleInfo: any }) => {
+  const { metadata, type } = titleInfo;
   return (
     <div style={{ width: 180 }} className="overflow-y-scroll">
       <img
         className="img-fluid rounded-top cursor-pointer"
-        src={titleInfo.metadata.cover}
+        src={metadata.cover}
         role="presentation"
-        onClick={() => gotoImdb(titleInfo.metadata.imdbid)}
+        onClick={() => gotoImdb(metadata.show_imdbid || metadata.imdbid)}
         alt=""
       />
       <br />
       <div
         className="py-1 rounded-bottom text-center w-100 text-white bg-customDarkBlue cursor-pointer"
         role="presentation"
-        onClick={() => gotoImdb(titleInfo.metadata.imdbid)}
+        onClick={() => gotoImdb(metadata.show_imdbid || metadata.imdbid)}
       >
-        {`IMDb Rating: ${titleInfo.metadata.rating}/10`}
+        {`IMDb Rating: ${metadata.rating}/10`}
       </div>
       <div className="text-center my-1">
-        {`${titleInfo.metadata.title} (${titleInfo.metadata.year})`}
+        <Button
+          variant="link"
+          onClick={() => gotoImdb(metadata.show_imdbid || metadata.imdbid)}
+          className="outline-0 box-shadow-none text-inherit p-0"
+        >
+          {`${metadata.title} (${metadata.year})`}
+        </Button>
       </div>
+      {metadata.episode_title && (
+        <div className="text-center my-1">
+          <Button
+            variant="link"
+            onClick={() => gotoImdb(metadata.imdbid)}
+            className="outline-0 box-shadow-none text-inherit p-0"
+          >
+            {`${metadata.episode_title} - S${metadata.season} E${metadata.episode}`}
+          </Button>
+        </div>
+      )}
       <div style={{ fontSize: 13 }} className="my-1">
-        <div>{`${titleInfo.metadata.duration}`}</div>
-        {titleInfo.metadata.tagline && (
-          <div>{`${titleInfo.metadata.tagline}`}</div>
-        )}
         <div>
-          <b className="">Starring:</b>
+          <b>
+            <u>Duration: </u>
+          </b>
+          {`${metadata.duration}`}
+        </div>
+        {/* <div>
+          <b>
+            <u>Votes: </u>
+          </b>
+          {`${metadata.votes}`}
+        </div> */}
+        <div>
+          <b>
+            <u>Starring:</u>
+          </b>
           <br />
           <span className="font-weight-light text-inherit">
-            {Object.values(titleInfo.metadata.cast).slice(0, 5).join(', ')}
+            {Object.values(metadata.cast).slice(0, 5).join(', ')}
           </span>
         </div>
       </div>

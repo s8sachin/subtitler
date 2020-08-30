@@ -72,7 +72,6 @@ export default function Home(): JSX.Element {
         // const request = http.get(selectedItem.url, function (response) {
         //   response.pipe(newFile);
         // });
-        console.log(resp);
       }
     } catch (err) {
       console.error(err);
@@ -105,7 +104,7 @@ export default function Home(): JSX.Element {
                       <>
                         Drag and drop your video file here or
                         <Button
-                          className="ml-3 outline-0"
+                          className="ml-3 outline-0 box-shadow-none"
                           variant="customDarkBlue text-white"
                         >
                           + Pick a file
