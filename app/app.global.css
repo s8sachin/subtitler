@@ -105,8 +105,9 @@ a:hover {
   cursor: pointer;
 }
 
-.box-shadow-none {
-  box-shadow: none;
+.box-shadow-none,
+.box-shadow-none:focus {
+  box-shadow: none !important;
 }
 
 .text-inherit {
