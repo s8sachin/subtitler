@@ -6,10 +6,12 @@ import Button from 'react-bootstrap/Button';
 import { Row, Col } from 'react-bootstrap';
 import { shell } from 'electron';
 
+import { useSelector } from 'react-redux';
 import routes from '../constants/routes.json';
 import { downloadFile } from '../utils/progress';
 import SubsTable from './SubsTable';
 import Logo from './Icons/Logo';
+import { currentTheme } from '../features/app/appSlice';
 
 const OpenSubtitles = new OS({ useragent: 'UserAgent', ssl: true });
 
@@ -17,6 +19,8 @@ const gotoImdb = (imdbid: string) =>
   shell.openExternal(`https://www.imdb.com/title/${imdbid}`);
 
 export default function Home(): JSX.Element {
+  const theme = useSelector(currentTheme);
+
   const [selecedFile, setSelectedFile] = useState<File | null>(null);
   const [searchResp, setSearchResp] = useState<any>(null);
   const [titleInfo, setTitleDetails] = useState<any>({});
@@ -109,7 +113,7 @@ export default function Home(): JSX.Element {
                         Drag and drop your video file here or
                         <Button
                           className="ml-3 outline-0"
-                          variant="customDarkBlue"
+                          variant="customDarkBlue text-white"
                         >
                           + Pick a file
                         </Button>
@@ -143,7 +147,7 @@ export default function Home(): JSX.Element {
                   />
                   <br />
                   <div
-                    className="py-1 rounded-bottom text-center w-100 bg-customLightBlue cursor-pointer"
+                    className="py-1 rounded-bottom text-center w-100 text-white bg-customDarkBlue cursor-pointer"
                     role="presentation"
                     onClick={() => gotoImdb(titleInfo.metadata.imdbid)}
                   >
@@ -154,11 +158,13 @@ export default function Home(): JSX.Element {
                   </div>
                   <div style={{ fontSize: 13 }} className="my-1">
                     <div>{`${titleInfo.metadata.duration}`}</div>
-                    <div>{`${titleInfo.metadata.tagline}`}</div>
+                    {titleInfo.metadata.tagline && (
+                      <div>{`${titleInfo.metadata.tagline}`}</div>
+                    )}
                     <div>
                       <b className="">Starring:</b>
                       <br />
-                      <span className="font-weight-light text-light">
+                      <span className="font-weight-light text-inherit">
                         {Object.values(titleInfo.metadata.cast)
                           .slice(0, 5)
                           .join(', ')}

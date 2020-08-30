@@ -14,7 +14,10 @@ const SubsTableHeadCol = ({
   const iconType = sortOpts.sortType === 'asc' ? 'up' : 'down';
   const isSameLabel = sortOpts.sortKey === labelKey;
   return (
-    <th onClick={() => onClick(labelKey)} className="user-select-none">
+    <th
+      onClick={() => onClick(labelKey)}
+      className="user-select-none text-white"
+    >
       <div
         className="d-flex cursor-pointer"
         style={{ marginRight: isSameLabel ? '' : 'calc(10px + 0.25rem)' }}

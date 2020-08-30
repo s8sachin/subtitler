@@ -9,9 +9,7 @@
 
 body {
   position: relative;
-  color: white !important;
   height: 100vh;
-  background-color: #232c39 !important;
 
   /* background-color: #2E2F30 !important; */
 
@@ -52,6 +50,41 @@ a:hover {
   cursor: pointer;
 }
 
+.app {
+  height: 100vh;
+}
+
+.app-light-theme {
+  background-color: #f2f2f2 !important;
+  color: #425b92 !important;
+  -webkit-transition: background-color 200ms linear;
+  -ms-transition: background-color 200ms linear;
+  transition: background-color 200ms linear;
+}
+
+.app-dark-theme {
+  background-color: #232c39 !important;
+  color: white !important;
+  -webkit-transition: background-color 200ms linear;
+  -ms-transition: background-color 200ms linear;
+  transition: background-color 200ms linear;
+}
+
+.bottom-nav-custom {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 12px;
+  background-color: #425b92;
+  color: white !important;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.bottom-nav-custom div:hover {
+  background-color: #ffffff26;
+}
+
 .bg-customLightBlue {
   background-color: #8090b380;
 }
@@ -70,6 +103,10 @@ a:hover {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.text-inherit {
+  color: inherit !important;
 }
 
 .dnd-area {

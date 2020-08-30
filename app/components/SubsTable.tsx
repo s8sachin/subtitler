@@ -60,7 +60,7 @@ const SubsTable = ({
           hover
           // variant="dark"
           borderless
-          className="text-white mb-0"
+          className="mb-0 text-inherit"
           size="sm"
           style={{ fontSize: 15 }}
         >
