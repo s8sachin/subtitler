@@ -168,25 +168,25 @@ a:hover {
 
 /* width */
 
-/* ::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 9px !important;
-} */
+}
 
 /* Track */
 
-/* ::-webkit-scrollbar-track {
-  background: #f1f1f1 !important;
-} */
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
 
 /* Handle */
 
-/* ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background: #888 !important;
   border-radius: 10px;
-} */
+}
 
 /* Handle on hover */
 
-/* ::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
   background: #555 !important;
-} */
+}
