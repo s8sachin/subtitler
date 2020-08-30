@@ -4,23 +4,16 @@ import * as OS from 'opensubtitles-api';
 import Dropzone from 'react-dropzone';
 import Button from 'react-bootstrap/Button';
 import { Row, Col } from 'react-bootstrap';
-import { shell } from 'electron';
 
-import { useSelector } from 'react-redux';
 import routes from '../constants/routes.json';
 import { downloadFile } from '../utils/progress';
 import SubsTable from './SubsTable';
 import Logo from './Icons/Logo';
-import { currentTheme } from '../features/app/appSlice';
+import MovieInfo from './MovieInfo';
 
 const OpenSubtitles = new OS({ useragent: 'UserAgent', ssl: true });
 
-const gotoImdb = (imdbid: string) =>
-  shell.openExternal(`https://www.imdb.com/title/${imdbid}`);
-
 export default function Home(): JSX.Element {
-  const theme = useSelector(currentTheme);
-
   const [selecedFile, setSelectedFile] = useState<File | null>(null);
   const [searchResp, setSearchResp] = useState<any>(null);
   const [titleInfo, setTitleDetails] = useState<any>({});
@@ -137,41 +130,7 @@ export default function Home(): JSX.Element {
                 <SubsTable listData={searchResp} onSelection={onSelection} />
               </Col>
               <Col style={{ height: '80vh', overflowY: 'auto' }}>
-                <div style={{ width: 180 }} className="overflow-y-scroll">
-                  <img
-                    className="img-fluid rounded-top cursor-pointer"
-                    src={titleInfo.metadata.cover}
-                    role="presentation"
-                    onClick={() => gotoImdb(titleInfo.metadata.imdbid)}
-                    alt=""
-                  />
-                  <br />
-                  <div
-                    className="py-1 rounded-bottom text-center w-100 text-white bg-customDarkBlue cursor-pointer"
-                    role="presentation"
-                    onClick={() => gotoImdb(titleInfo.metadata.imdbid)}
-                  >
-                    {`IMDb Rating: ${titleInfo.metadata.rating}/10`}
-                  </div>
-                  <div className="text-center my-1">
-                    {`${titleInfo.metadata.title} (${titleInfo.metadata.year})`}
-                  </div>
-                  <div style={{ fontSize: 13 }} className="my-1">
-                    <div>{`${titleInfo.metadata.duration}`}</div>
-                    {titleInfo.metadata.tagline && (
-                      <div>{`${titleInfo.metadata.tagline}`}</div>
-                    )}
-                    <div>
-                      <b className="">Starring:</b>
-                      <br />
-                      <span className="font-weight-light text-inherit">
-                        {Object.values(titleInfo.metadata.cast)
-                          .slice(0, 5)
-                          .join(', ')}
-                      </span>
-                    </div>
-                  </div>
-                </div>
+                <MovieInfo titleInfo={titleInfo} />
               </Col>
             </Row>
           </>
