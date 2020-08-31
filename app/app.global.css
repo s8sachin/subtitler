@@ -6,6 +6,7 @@
 
 /* @import "~bootstrap/scss/bootstrap.scss"; */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+@import '../resources/fonts/NotoSansJP-medium.css';
 
 body {
   position: relative;
@@ -18,7 +19,9 @@ body {
     rgba(0, 216, 255, 0.5) 10%,
     rgba(0, 1, 127, 0.7)
   ); */
-  font-family: Arial, Helvetica, Helvetica Neue, serif;
+
+  /* font-family: Arial, Helvetica, Helvetica Neue, serif; */
+  font-family: 'Noto Sans JP', sans-serif;
   overflow-y: hidden;
 }
 
