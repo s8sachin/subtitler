@@ -159,8 +159,8 @@ a:hover {
 }
 
 .scrollable-tbody {
-  max-height: 70vh;
-  overflow-y: auto;
+  max-height: calc(70vh - 40px);
+  overflow-y: scroll;
 }
 
 /* tbody::before {
@@ -169,27 +169,36 @@ a:hover {
   height: 10px;
 } */
 
-/* width */
+/* Scrollbar  */
 
 ::-webkit-scrollbar {
   width: 9px !important;
 }
 
-/* Track */
+/* scrollbar for theme */
 
-::-webkit-scrollbar-track {
-  background: transparent !important;
+.app-dark-theme ::-webkit-scrollbar-track {
+  background: #545b62 !important;
 }
 
-/* Handle */
+.app-light-theme ::-webkit-scrollbar-track {
+  background: #343a4038 !important;
+}
 
-::-webkit-scrollbar-thumb {
+.app-dark-theme ::-webkit-scrollbar-thumb {
+  background: #343a40 !important;
+  border-radius: 10px;
+}
+
+.app-light-theme ::-webkit-scrollbar-thumb {
   background: #888 !important;
   border-radius: 10px;
 }
 
-/* Handle on hover */
+.app-dark-theme ::-webkit-scrollbar-thumb:hover {
+  background: #212529 !important;
+}
 
-::-webkit-scrollbar-thumb:hover {
+.app-light-theme ::-webkit-scrollbar-thumb:hover {
   background: #555 !important;
 }

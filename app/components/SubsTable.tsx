@@ -9,18 +9,22 @@ const tableHeadersList = [
   {
     label: 'Name',
     key: 'filename',
+    style: { width: '100%' },
   },
   {
     label: 'Downloads',
     key: 'downloads',
+    style: { minWidth: 100 },
   },
   {
     label: 'Score',
     key: 'score',
+    style: { minWidth: 60 },
   },
   {
     label: 'Language',
     key: 'lang',
+    style: { minWidth: 90 },
   },
 ];
 
@@ -57,36 +61,40 @@ const SubsTable = ({
 
   return (
     <>
+      <div
+        className="bg-customDarkBlue border-customDarkBlue d-flex"
+        // style={{ width: 'calc(100% - 9px)' }}
+        style={{ paddingRight: 9 }}
+      >
+        <div className="d-flex w-100">
+          {tableHeadersList.map((headerObj: any) => (
+            <SubsTableHeadCol
+              label={headerObj.label}
+              labelKey={headerObj.key}
+              sortOpts={sortOpts}
+              key={headerObj.key}
+              onClick={handleHeadClick}
+              style={headerObj.style}
+            />
+          ))}
+        </div>
+      </div>
       <div className="scrollable-tbody">
         <Table
           striped
           hover
-          // variant="dark"
           borderless
           className="mb-0 text-inherit"
           size="sm"
           style={{ fontSize: 15 }}
         >
-          <thead className="bg-customDarkBlue border-customDarkBlue">
-            <tr>
-              {tableHeadersList.map((headerObj: any) => (
-                <SubsTableHeadCol
-                  label={headerObj.label}
-                  labelKey={headerObj.key}
-                  sortOpts={sortOpts}
-                  key={headerObj.key}
-                  onClick={handleHeadClick}
-                />
-              ))}
-            </tr>
-          </thead>
           <tbody className="mt-2" style={{ border: '1px solid #425b92a8' }}>
             {isLoading && (
               <>
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map((num) => (
-                  <tr key={num} style={{ opacity: 0.8 }}>
-                    {[1, 2, 3, 4].map((it) => (
-                      <td key={it} className="w-100">
+                  <tr key={num} style={{ opacity: 0.8, marginRight: 9 }}>
+                    {tableHeadersList.map((it) => (
+                      <td key={it.label} className="w-100" style={it.style}>
                         <Skeleton />
                       </td>
                     ))}
@@ -105,11 +113,24 @@ const SubsTable = ({
                   <td className="max-width-0 w-100 text-truncate">
                     {subObj.filename}
                   </td>
-                  <td className="max-width-0 text-truncate">
+                  <td
+                    className="max-width-0 text-truncate"
+                    style={{ minWidth: 100 }}
+                  >
                     {subObj.downloads}
                   </td>
-                  <td className="max-width-0 text-truncate">{subObj.score}</td>
-                  <td className="max-width-0 text-truncate">{subObj.lang}</td>
+                  <td
+                    className="max-width-0 text-truncate"
+                    style={{ minWidth: 60 }}
+                  >
+                    {subObj.score}
+                  </td>
+                  <td
+                    className="max-width-0 text-truncate"
+                    style={{ minWidth: 90 }}
+                  >
+                    {subObj.lang}
+                  </td>
                 </tr>
               ))}
           </tbody>

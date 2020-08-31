@@ -84,7 +84,6 @@ export default function Home(): JSX.Element {
 
   return (
     <div className="container">
-      {console.log(isLoading, 'isLoading')}
       <Row>
         <Dropzone
           multiple={false}

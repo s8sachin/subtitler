@@ -5,27 +5,31 @@ const SubsTableHeadCol = ({
   labelKey,
   sortOpts,
   onClick,
+  style,
 }: {
   label: string;
   labelKey: string;
   sortOpts: any;
   onClick: any;
+  style: any;
 }) => {
   const iconType = sortOpts.sortType === 'asc' ? 'up' : 'down';
   const isSameLabel = sortOpts.sortKey === labelKey;
   return (
-    <th
+    <div
       onClick={() => onClick(labelKey)}
-      className="user-select-none text-white"
+      className="user-select-none text-white d-flex cursor-pointer p-1"
+      style={{ ...style, fontSize: 15 }}
+      role="presentation"
     >
       <div
-        className="d-flex cursor-pointer"
-        style={{ marginRight: isSameLabel ? '' : 'calc(10px + 0.25rem)' }}
+        className="d-flex"
+        // style={{ marginRight: isSameLabel ? '' : 'calc(10px + 0.25rem)' }}
       >
         {label}
         {isSameLabel && <i className={`fas fa-caret-${iconType} ml-1 mt-1`} />}
       </div>
-    </th>
+    </div>
   );
 };
 
