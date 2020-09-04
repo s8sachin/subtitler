@@ -20,7 +20,7 @@ const MovieInfo = ({
       {isLoading ? (
         <>
           <Skeleton
-            style={{ height: 300 }}
+            style={{ height: 280 }}
             className="img-fluid rounded-top cursor-pointer"
           />
           <br />

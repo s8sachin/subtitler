@@ -55,9 +55,9 @@ export default function Home(): JSX.Element {
   const onFileSelect = async (files: File[]) => {
     // const file: File | null = e.target.files && e.target.files[0];
     const file: File | null = files && files[0];
-    setIsLoading(true);
     try {
       if (file) {
+        setIsLoading(true);
         setSelectedFile(file);
 
         const searchObj: any = getSearchObjBsedOnFile(file);
@@ -159,9 +159,13 @@ export default function Home(): JSX.Element {
           <>
             <Row>
               <Col style={{ minWidth: 'calc(100% - 210px)' }}>
-                <h4 className="text-truncate mb-3" title={selecedFile.name}>
+                <div
+                  className="text-truncate mb-2"
+                  style={{ fontSize: '1.5rem' }}
+                  title={selecedFile.name}
+                >
                   {selecedFile.name}
-                </h4>
+                </div>
                 <SubsTable
                   isLoading={isLoading}
                   listData={searchResp}
