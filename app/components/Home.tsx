@@ -13,6 +13,24 @@ import MovieInfo from './MovieInfo';
 
 const OpenSubtitles = new OS({ useragent: 'UserAgent', ssl: true });
 
+const getSearchObjBsedOnFile = (file: any) => {
+  return {
+    // sublanguageid: 'en', // Can be an array.join, 'all', or be omitted.
+    // // hash: '8e245d9679d31e12', // Size + 64bit checksum of the first and last 64k
+    // filesize: `${file.size}`, // Total size, in bytes.
+    // path: file.path, // Complete path to the video file, it allows to automatically calculate 'hash'.
+    // filename: file.name, // The video file name. Better if extension is included.
+    // season: '2',
+    // episode: '3',
+    // extensions: ['srt', 'vtt'], // Accepted extensions, defaults to 'srt'.
+    limit: 'all', // Can be 'best', 'all' or an arbitrary nb. Defaults to 'best'
+    // imdbid: '528809', // 'tt528809' is fine too.
+    // fps: '23.96', // Number of frames per sec in the video.
+    query: file.name, // Text-based query, this is not recommended.
+    gzip: false, // returns url to gzipped subtitles, defaults to false
+  };
+};
+
 export default function Home(): JSX.Element {
   const [selecedFile, setSelectedFile] = useState<File | null>(null);
   const [searchResp, setSearchResp] = useState<any>([]);
@@ -41,33 +59,42 @@ export default function Home(): JSX.Element {
     try {
       if (file) {
         setSelectedFile(file);
-        const searchObj: any = {
-          // sublanguageid: 'en', // Can be an array.join, 'all', or be omitted.
-          // // hash: '8e245d9679d31e12', // Size + 64bit checksum of the first and last 64k
-          // filesize: `${file.size}`, // Total size, in bytes.
-          // path: file.path, // Complete path to the video file, it allows to automatically calculate 'hash'.
-          // filename: file.name, // The video file name. Better if extension is included.
-          // season: '2',
-          // episode: '3',
-          // extensions: ['srt', 'vtt'], // Accepted extensions, defaults to 'srt'.
-          limit: 'all', // Can be 'best', 'all' or an arbitrary nb. Defaults to 'best'
-          // imdbid: '528809', // 'tt528809' is fine too.
-          // fps: '23.96', // Number of frames per sec in the video.
-          query: file.name, // Text-based query, this is not recommended.
-          gzip: false, // returns url to gzipped subtitles, defaults to false
-        };
 
-        const resp = await OpenSubtitles.search(searchObj);
+        const searchObj: any = getSearchObjBsedOnFile(file);
         const movieInfo = await OpenSubtitles.identify({
           path: file.path,
           extend: true,
         });
-        setTitleDetails(movieInfo);
-        console.log(movieInfo, 'XXX');
+
+        let resp = await OpenSubtitles.search(searchObj);
+
+        /**
+         * Wrong video file - i.e video hash not recognized
+         */
+        if (!movieInfo.metadata) movieInfo.fileInfo = 'Corrupted';
+
+        /**
+         * Right file but wrong fileName, so reconstruct file name and search for subtitles again
+         */
+        if (movieInfo.metadata && Object.keys(resp).length === 0) {
+          const { title, episode_title: epTitle = '' } = movieInfo.metadata;
+          const name = `${title} ${epTitle}`;
+          resp = await OpenSubtitles.search(getSearchObjBsedOnFile({ name }));
+        }
+
+        /**
+         * Right file but wrong fileName
+         */
+        if (Object.keys(resp).length === 0) movieInfo.fileInfo = 'No results';
+
+        /**
+         * Convert object to array
+         */
         const modifiedResp: any[] = [];
         Object.keys(resp).forEach((lang) => {
           modifiedResp.push(...resp[lang]);
         });
+        setTitleDetails(movieInfo);
         setSearchResp(modifiedResp);
         setIsLoading(false);
 
@@ -78,6 +105,10 @@ export default function Home(): JSX.Element {
       }
     } catch (err) {
       setIsLoading(false);
+      setSearchResp([]);
+      setTitleDetails({});
+      setSelectedFile(null);
+      alert('Something went wrong, Try again');
       console.error(err);
     }
   };

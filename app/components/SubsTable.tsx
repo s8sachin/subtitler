@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
 import { sortAsc, sortDesc } from '../utils/sortHelper';
 import SubsTableHeadCol from './SubsTableHeaderCol';
+import EmptySvg from '../../resources/empty.svg';
 
 const tableHeadersList = [
   {
@@ -61,24 +62,34 @@ const SubsTable = ({
 
   return (
     <>
-      <div
-        className="bg-customDarkBlue border-customDarkBlue d-flex"
-        // style={{ width: 'calc(100% - 9px)' }}
-        style={{ paddingRight: 9 }}
-      >
-        <div className="d-flex w-100">
-          {tableHeadersList.map((headerObj: any) => (
-            <SubsTableHeadCol
-              label={headerObj.label}
-              labelKey={headerObj.key}
-              sortOpts={sortOpts}
-              key={headerObj.key}
-              onClick={handleHeadClick}
-              style={headerObj.style}
-            />
-          ))}
+      {!isLoading && sortedList.length === 0 && (
+        <>
+          <h3 className="w-100 d-flex justify-content-center">
+            No results found
+          </h3>
+          <img src={EmptySvg} className="img-fluid w-100 h-50" alt="Empty" />
+        </>
+      )}
+      {(isLoading || sortedList.length !== 0) && (
+        <div
+          className="bg-customDarkBlue border-customDarkBlue d-flex"
+          // style={{ width: 'calc(100% - 9px)' }}
+          style={{ paddingRight: 9 }}
+        >
+          <div className="d-flex w-100">
+            {tableHeadersList.map((headerObj: any) => (
+              <SubsTableHeadCol
+                label={headerObj.label}
+                labelKey={headerObj.key}
+                sortOpts={sortOpts}
+                key={headerObj.key}
+                onClick={handleHeadClick}
+                style={headerObj.style}
+              />
+            ))}
+          </div>
         </div>
-      </div>
+      )}
       <div className="scrollable-tbody">
         <Table
           striped
