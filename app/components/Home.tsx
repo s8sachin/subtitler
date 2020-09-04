@@ -138,9 +138,7 @@ export default function Home(): JSX.Element {
                 />
               </Col>
               <Col style={{ height: '80vh', overflowY: 'auto' }}>
-                {searchResp && titleInfo.metadata && (
-                  <MovieInfo titleInfo={titleInfo} isLoading={isLoading} />
-                )}
+                <MovieInfo titleInfo={titleInfo} isLoading={isLoading} />
               </Col>
             </Row>
           </>

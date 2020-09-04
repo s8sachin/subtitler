@@ -13,7 +13,7 @@ const MovieInfo = ({
   titleInfo: any;
   isLoading: boolean;
 }) => {
-  const { metadata, type } = titleInfo;
+  const { metadata = {}, type } = titleInfo;
   return (
     <div style={{ width: 180 }} className="overflow-y-scroll">
       {isLoading ? (
