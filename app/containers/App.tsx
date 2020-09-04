@@ -33,7 +33,7 @@ export default function App(props: Props) {
             role="presentation"
             className="cursor-pointer px-2"
           >
-            <i className={`fas fa-${theme === 'dark' ? 'moon' : 'sun'}`} />
+            <i className={`fas fa-${theme === 'dark' ? 'sun' : 'moon'}`} />
           </div>
         </div>
       </div>
