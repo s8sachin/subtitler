@@ -5,6 +5,7 @@ import Skeleton from 'react-loading-skeleton';
 import { sortAsc, sortDesc } from '../utils/sortHelper';
 import SubsTableHeadCol from './SubsTableHeaderCol';
 import EmptySvg from '../../resources/empty.svg';
+import LangDropdown from './LangDropdown';
 
 const tableHeadersList = [
   {
@@ -29,6 +30,8 @@ const tableHeadersList = [
   },
 ];
 
+const initialLang = localStorage.getItem('lang') || 'all';
+
 const SubsTable = ({
   listData,
   onSelection,
@@ -42,11 +45,15 @@ const SubsTable = ({
     sortKey: 'lang',
     sortType: 'asc',
   });
+  const [selectedLang, setSelectedLang] = useState(initialLang);
   let sortedList = listData;
   sortedList = listData.sort((a: any, b: any) =>
     sortOpts.sortType === 'asc'
       ? sortAsc(a, b, sortOpts.sortKey)
       : sortDesc(a, b, sortOpts.sortKey)
+  );
+  sortedList = sortedList.filter((obj) =>
+    ['all', obj.langcode].includes(selectedLang)
   );
 
   const handleHeadClick = (labelKey: string) => {
@@ -60,21 +67,18 @@ const SubsTable = ({
     setSortOpts(newSortOpts);
   };
 
+  const onLangClick = (langCode: string) => {
+    setSelectedLang(langCode);
+    localStorage.setItem('lang', langCode);
+  };
+
   return (
     <>
-      {!isLoading && sortedList.length === 0 && (
-        <>
-          <h3 className="w-100 d-flex justify-content-center">
-            No results found
-          </h3>
-          <img src={EmptySvg} className="img-fluid w-100 h-50" alt="Empty" />
-        </>
-      )}
-      {(isLoading || sortedList.length !== 0) && (
+      {(isLoading || listData.length !== 0) && (
         <div
           className="bg-customDarkBlue border-customDarkBlue d-flex"
           // style={{ width: 'calc(100% - 9px)' }}
-          style={{ paddingRight: 9 }}
+          style={{ paddingRight: 3 }}
         >
           <div className="d-flex w-100">
             {tableHeadersList.map((headerObj: any) => (
@@ -87,8 +91,20 @@ const SubsTable = ({
                 style={headerObj.style}
               />
             ))}
+            <LangDropdown
+              selectedLang={selectedLang}
+              onClickItem={onLangClick}
+            />
           </div>
         </div>
+      )}
+      {!isLoading && sortedList.length === 0 && (
+        <>
+          <h3 className="w-100 d-flex justify-content-center">
+            No results found
+          </h3>
+          <img src={EmptySvg} className="img-fluid w-100 h-50" alt="Empty" />
+        </>
       )}
       <div className="scrollable-tbody">
         <Table

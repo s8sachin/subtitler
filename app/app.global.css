@@ -205,3 +205,11 @@ a:hover {
 .app-light-theme ::-webkit-scrollbar-thumb:hover {
   background: #555 !important;
 }
+
+.lang-dropdown {
+  font-size: 11px;
+}
+
+.lang-dropdown.dropdown-toggle::after {
+  content: none !important;
+}
