@@ -282,6 +282,7 @@
     "electron-updater": "^4.3.1",
     "history": "^4.7.2",
     "jquery": "^3.5.1",
+    "node-sass": "^4.14.1",
     "opensubtitles-api": "^5.1.2",
     "popper.js": "^1.16.1",
     "react": "^16.13.1",

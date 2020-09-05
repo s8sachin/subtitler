@@ -4,7 +4,7 @@
 import React, { useState, forwardRef } from 'react';
 import { Dropdown, FormControl } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { langMapArrayObj } from '../utils/languageMap';
+import { langMapArrayObj } from '../../../utils/languageMap';
 
 const CustomMenu = forwardRef(
   (
@@ -32,7 +32,7 @@ const CustomMenu = forwardRef(
       >
         <FormControl
           autoFocus
-          className="mx-3 my-2 w-auto"
+          className="mx-3 my-2 w-auto text-customDarkBlue"
           placeholder="Type to filter..."
           onChange={(e) => setValue(e.target.value)}
           value={value}
@@ -40,7 +40,8 @@ const CustomMenu = forwardRef(
         <ul className="list-unstyled">
           {React.Children.toArray(children).filter(
             (child: any) =>
-              !value || child.props.children.toLowerCase().startsWith(value)
+              !value ||
+              child.props.children.toLowerCase().startsWith(value.toLowerCase())
           )}
         </ul>
       </div>
@@ -56,13 +57,19 @@ const LangDropdown = ({
   onClickItem: any;
 }) => {
   return (
-    <Dropdown>
-      <Dropdown.Toggle variant="none" className="p-0 lang-dropdown text-white">
+    <Dropdown className="lang-dropdown">
+      <Dropdown.Toggle
+        variant="none"
+        className="p-0 lang-dropdown-toggle text-white"
+      >
         <i className="fas fa-ellipsis-v" />
       </Dropdown.Toggle>
-      <Dropdown.Menu as={CustomMenu}>
+      <Dropdown.Menu as={CustomMenu} className="lang-dropdown-menu">
         <Dropdown.Item
-          className={`text-${selectedLang === 'all' ? 'white' : 'dark'}`}
+          variant="customDarkBlue"
+          className={`${
+            selectedLang === 'all' ? 'text-white' : 'text-customDarkBlue'
+          }`}
           onClick={() => onClickItem('all')}
           active={selectedLang === 'all'}
         >
@@ -76,8 +83,10 @@ const LangDropdown = ({
           //   label={langObj.language}
           // />
           <Dropdown.Item
-            className={`text-${
-              selectedLang === langObj.langCode ? 'white' : 'dark'
+            className={`${
+              selectedLang === langObj.langCode
+                ? 'text-white'
+                : 'text-customDarkBlue'
             } text-truncate`}
             key={langObj.langCode}
             onClick={() => onClickItem(langObj.langCode)}

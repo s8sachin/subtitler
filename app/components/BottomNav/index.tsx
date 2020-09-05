@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { currentTheme, flipTheme } from '../features/app/appSlice';
+import { currentTheme, flipTheme } from '../../features/app/appSlice';
 
 const BottomNav = () => {
   const dispatch = useDispatch();

@@ -5,10 +5,10 @@ import Dropzone from 'react-dropzone';
 import Button from 'react-bootstrap/Button';
 import { Row, Col } from 'react-bootstrap';
 
-import routes from '../constants/routes.json';
-import { downloadFile } from '../utils/progress';
+// import routes from '../../constants/routes.json';
+import { downloadFile } from '../../utils/progress';
 import SubsTable from './SubsTable';
-import Logo from './Icons/Logo';
+import Logo from '../Icons/Logo';
 import MovieInfo from './MovieInfo';
 
 const OpenSubtitles = new OS({ useragent: 'UserAgent', ssl: true });

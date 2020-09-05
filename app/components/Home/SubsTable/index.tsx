@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Table } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import Skeleton from 'react-loading-skeleton';
-import { sortAsc, sortDesc } from '../utils/sortHelper';
+import { sortAsc, sortDesc } from '../../../utils/sortHelper';
 import SubsTableHeadCol from './SubsTableHeaderCol';
-import EmptySvg from '../../resources/empty.svg';
+import EmptySvg from '../../../../resources/empty.svg';
 import LangDropdown from './LangDropdown';
+import LoadingTbody from './LoadingTbody';
 
 const tableHeadersList = [
   {
@@ -31,6 +31,7 @@ const tableHeadersList = [
 ];
 
 const initialLang = localStorage.getItem('lang') || 'all';
+const initialSortOpts = { sortKey: 'lang', sortType: 'asc' };
 
 const SubsTable = ({
   listData,
@@ -41,19 +42,18 @@ const SubsTable = ({
   onSelection: any;
   isLoading: boolean;
 }) => {
-  const [sortOpts, setSortOpts] = useState({
-    sortKey: 'lang',
-    sortType: 'asc',
-  });
+  const [sortOpts, setSortOpts] = useState(initialSortOpts);
   const [selectedLang, setSelectedLang] = useState(initialLang);
+
   let sortedList = listData;
   sortedList = listData.sort((a: any, b: any) =>
     sortOpts.sortType === 'asc'
       ? sortAsc(a, b, sortOpts.sortKey)
       : sortDesc(a, b, sortOpts.sortKey)
   );
-  sortedList = sortedList.filter((obj) =>
-    ['all', obj.langcode].includes(selectedLang)
+
+  sortedList = sortedList.filter(({ langcode }) =>
+    ['all', langcode].includes(selectedLang)
   );
 
   const handleHeadClick = (labelKey: string) => {
@@ -116,19 +116,7 @@ const SubsTable = ({
           style={{ fontSize: 15 }}
         >
           <tbody className="mt-2" style={{ border: '1px solid #425b92a8' }}>
-            {isLoading && (
-              <>
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map((num) => (
-                  <tr key={num} style={{ opacity: 0.8, marginRight: 9 }}>
-                    {tableHeadersList.map((it) => (
-                      <td key={it.label} className="w-100" style={it.style}>
-                        <Skeleton />
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </>
-            )}
+            {isLoading && <LoadingTbody tableHeadersList={tableHeadersList} />}
             {!isLoading &&
               sortedList.map((subObj) => (
                 <tr

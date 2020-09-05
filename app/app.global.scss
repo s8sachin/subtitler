@@ -1,0 +1,12 @@
+/*
+ * @NOTE: Prepend a `~` to css file paths that are in your node_modules
+ *        See https://github.com/webpack-contrib/sass-loader#imports
+ */
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+/* @import "~bootstrap/scss/bootstrap.scss"; */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '../resources/fonts/NotoSansJP-medium.css';
+@import './app.scss';
+@import './components/Home/Home.scss';
+@import './components/BottomNav/BottomNav.scss';

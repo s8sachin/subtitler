@@ -1,0 +1,17 @@
+.bottom-nav-custom {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 12px;
+  background-color: #425b92;
+  color: white !important;
+}
+
+.bottom-nav-custom div {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.bottom-nav-custom div:hover {
+  background-color: #ffffff26;
+}
