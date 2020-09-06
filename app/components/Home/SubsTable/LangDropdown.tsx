@@ -60,7 +60,7 @@ const LangDropdown = ({
     <Dropdown className="lang-dropdown">
       <Dropdown.Toggle
         variant="none"
-        className="p-0 lang-dropdown-toggle text-white"
+        className="p-0 lang-dropdown-toggle text-white outline-0 user-select-none box-shadow-none"
       >
         <i className="fas fa-ellipsis-v" />
       </Dropdown.Toggle>

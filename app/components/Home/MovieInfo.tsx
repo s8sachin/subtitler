@@ -20,15 +20,16 @@ const MovieInfo = ({
       {isLoading ? (
         <>
           <Skeleton
+            duration={2}
             style={{ height: 280 }}
             className="img-fluid rounded-top cursor-pointer"
           />
           <br />
           <div className="my-1 h5">
-            <Skeleton />
+            <Skeleton duration={2} />
           </div>
           <div style={{ fontSize: 13 }} className="my-1">
-            <Skeleton count={3} />
+            <Skeleton duration={2} count={3} />
           </div>
         </>
       ) : (

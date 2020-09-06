@@ -8,7 +8,7 @@ const LoadingTbody = ({ tableHeadersList }: { tableHeadersList: any[] }) => {
         <tr key={num} style={{ opacity: 0.8, marginRight: 9 }}>
           {tableHeadersList.map((it) => (
             <td key={it.label} className="w-100" style={it.style}>
-              <Skeleton />
+              <Skeleton duration={2} />
             </td>
           ))}
         </tr>

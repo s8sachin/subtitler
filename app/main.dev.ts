@@ -97,7 +97,7 @@ const createWindow = async () => {
 
   const menuBuilder = new MenuBuilder(mainWindow);
   menuBuilder.buildMenu();
-
+  mainWindow.removeMenu();
   // Remove this if your app does not use auto updates
   // eslint-disable-next-line
   new AppUpdater();

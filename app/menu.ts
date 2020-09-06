@@ -5,6 +5,7 @@ import {
   BrowserWindow,
   MenuItemConstructorOptions,
 } from 'electron';
+// import appIcon from '../resources/icons/64x64.png';
 
 interface DarwinMenuItemConstructorOptions extends MenuItemConstructorOptions {
   selector?: string;
@@ -33,6 +34,14 @@ export default class MenuBuilder {
 
     const menu = Menu.buildFromTemplate(template);
     Menu.setApplicationMenu(menu);
+    app.setAboutPanelOptions({
+      applicationName: 'Subtitleh',
+      applicationVersion: 'App Version',
+      version: 'V 1.2.3',
+      iconPath: '../resources/icons/64x64.png',
+      // credits: 'https://s8sachin.github.io',
+      // copyright: 'Copyright',
+    });
 
     return menu;
   }
@@ -54,14 +63,14 @@ export default class MenuBuilder {
 
   buildDarwinTemplate(): MenuItemConstructorOptions[] {
     const subMenuAbout: DarwinMenuItemConstructorOptions = {
-      label: 'Electron',
+      label: 'Subtitleh',
       submenu: [
         {
           label: 'About Subtitleh',
           selector: 'orderFrontStandardAboutPanel:',
         },
         { type: 'separator' },
-        { label: 'Services', submenu: [] },
+        { label: 'Services', role: 'services' },
         { type: 'separator' },
         {
           label: 'Hide Subtitleh',
@@ -189,7 +198,13 @@ export default class MenuBuilder {
         ? subMenuViewDev
         : subMenuViewProd;
 
-    return [subMenuAbout, subMenuEdit, subMenuView, subMenuWindow, subMenuHelp];
+    return [
+      subMenuAbout,
+      // subMenuEdit,
+      subMenuView,
+      subMenuWindow,
+      subMenuHelp,
+    ];
   }
 
   buildDefaultTemplate() {
