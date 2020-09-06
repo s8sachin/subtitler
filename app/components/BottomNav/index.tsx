@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { currentTheme, flipTheme } from '../../features/app/appSlice';
+import { APP_VERSION } from '../../utils/constants';
 
 const BottomNav = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const BottomNav = () => {
         title="About Subtitleh"
         onClick={() => {}}
       >
-        <span>Subtitleh | V1.2.0</span>
+        <span>{`Subtitleh | V${APP_VERSION}`}</span>
       </div>
       <div
         onClick={() => dispatch(flipTheme())}

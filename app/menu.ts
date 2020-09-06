@@ -5,6 +5,7 @@ import {
   BrowserWindow,
   MenuItemConstructorOptions,
 } from 'electron';
+import { APP_VERSION } from './utils/constants';
 // import appIcon from '../resources/icons/64x64.png';
 
 interface DarwinMenuItemConstructorOptions extends MenuItemConstructorOptions {
@@ -37,8 +38,10 @@ export default class MenuBuilder {
     app.setAboutPanelOptions({
       applicationName: 'Subtitleh',
       applicationVersion: 'App Version',
-      version: 'V 1.2.3',
+      version: `'V${APP_VERSION}`,
       iconPath: '../resources/icons/64x64.png',
+      website: 'https://s8sachin.github.io/subtitleh',
+      authors: ['s8sachin'],
       // credits: 'https://s8sachin.github.io',
       // copyright: 'Copyright',
     });
