@@ -2,7 +2,7 @@
   "name": "subtitleh",
   "productName": "Subtitleh",
   "version": "1.3.0",
-  "description": "Find your subtitles quickly",
+  "description": "Quickly download subtitles",
   "main": "./main.prod.js",
   "author": {
     "name": "Subtitleh Maintainer",
