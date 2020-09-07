@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
+        os: [macos-latest]
 
     steps:
       - name: Check out Git repository
@@ -27,11 +27,10 @@ jobs:
         uses: GabrielBB/xvfb-action@v1.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          run: |
-            yarn package-ci
-            yarn lint
-            yarn tsc
-            yarn test
-            yarn build-e2e
-            yarn test-e2e
+        run: |
+          yarn package-ci
+          yarn lint
+          yarn tsc
+          yarn test
+          yarn build-e2e
+          yarn test-e2e
