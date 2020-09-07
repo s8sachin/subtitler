@@ -38,7 +38,7 @@ export default class MenuBuilder {
     app.setAboutPanelOptions({
       applicationName: 'Subtitleh',
       applicationVersion: 'App Version',
-      version: `'V${APP_VERSION}`,
+      version: `V${APP_VERSION}`,
       iconPath: '../resources/icons/64x64.png',
       website: 'https://s8sachin.github.io/subtitleh',
       authors: ['s8sachin'],
