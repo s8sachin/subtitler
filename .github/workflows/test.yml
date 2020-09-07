@@ -28,5 +28,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          run: |
-            echo "cmd1" && echo "2nd step"
+          run: echo "cmd1" && echo "2nd step"
