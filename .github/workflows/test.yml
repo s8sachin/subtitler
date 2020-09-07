@@ -28,6 +28,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          run: >
+          run: |
             echo package-ci
             echo "2nd step"
