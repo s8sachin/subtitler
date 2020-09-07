@@ -3,31 +3,35 @@ name: Test
 on: [push, pull_request]
 
 jobs:
-  release:
-    runs-on: ${{ matrix.os }}
+	release:
+	runs-on: ${{ matrix.os }}
 
-    strategy:
-      matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
+	strategy:
+		matrix:
+		os: [macos-latest, ubuntu-latest, windows-latest]
 
-    steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v1
+	steps:
+		- name: Check out Git repository
+			uses: actions/checkout@v1
 
-      - name: Install Node.js, NPM and Yarn
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14
+		- name: Install Node.js, NPM and Yarn
+			uses: actions/setup-node@v1
+			with:
+				node-version: 14
 
-      - name: yarn install
-        run: |
-          yarn install --frozen-lockfile
+		- name: yarn install
+			run: |
+				yarn install --frozen-lockfile
 
-      - name: yarn test
-        uses: GabrielBB/xvfb-action@v1.2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          run: |
-            echo package-ci
-            echo "2nd step"
+		- name: yarn test
+			uses: GabrielBB/xvfb-action@v1.0
+			env:
+				GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+			with:
+				run: |
+					yarn package-ci
+					yarn lint
+					yarn tsc
+					yarn test
+					yarn build-e2e
+					yarn test-e2e
