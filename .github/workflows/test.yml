@@ -19,11 +19,11 @@ jobs:
         with:
           node-version: 14
 
-      - name: yarn install
+      - name: Install Yarn
         run: |
           yarn install --frozen-lockfile
 
-      - name: yarn test
+      - name: Package, test and draft release
         uses: GabrielBB/xvfb-action@v1.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
