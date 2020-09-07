@@ -29,5 +29,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           run: |
-            yarn package-ci
-            echo "2nd step"
+            echo "cmd1" && echo "2nd step"
