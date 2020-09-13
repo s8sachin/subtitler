@@ -1,6 +1,6 @@
 name: Package
 
-on: [push]
+on: []
 
 jobs:
   release:
