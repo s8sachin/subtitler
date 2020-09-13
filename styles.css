@@ -25,6 +25,14 @@ body {
   border-radius: 35px;
 }
 
+.btn-custom {
+  background-color: #AD2891;
+}
+
+.btn-custom:hover {
+  background-color: #FA6BDC;
+}
+
 @media (max-width: 1200px) {
   .display-3 {
       font-size: calc(1.575rem + 3.9vw);
