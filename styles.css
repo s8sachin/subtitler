@@ -29,6 +29,10 @@ body {
   background-color: #AD2891;
 }
 
+.text-customPink {
+  color: #AD2891;
+}
+
 .btn-custom:hover {
   background-color: #FA6BDC;
 }
