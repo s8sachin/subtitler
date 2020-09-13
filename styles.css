@@ -13,8 +13,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 100%;
+  /* color: #f2f2f2;
+  background-color: #232c39; */
   color: #232c39;
-  background-color: #8cf17378;
+  background-color: #f2f2f2;
 }
 
 .h-100vh {
@@ -26,15 +28,19 @@ body {
 }
 
 .btn-custom {
-  background-color: #AD2891;
+  background-color: #425b92;
 }
 
 .text-customPink {
-  color: #AD2891;
+  color: #425b92;
+}
+
+.text-inherit {
+  color: inherit !important;
 }
 
 .btn-custom:hover {
-  background-color: #FA6BDC;
+  background-color: #425b92b8;
 }
 
 @media (max-width: 1200px) {
