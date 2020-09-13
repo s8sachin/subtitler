@@ -1,7 +1,11 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { shell } from 'electron';
 import { currentTheme, flipTheme } from '../../features/app/appSlice';
 import { APP_VERSION } from '../../utils/constants';
+
+const openLink = () =>
+  shell.openExternal(`https://s8sachin.github.io/subtitleh`);
 
 const BottomNav = () => {
   const dispatch = useDispatch();
@@ -15,7 +19,9 @@ const BottomNav = () => {
         title="About Subtitleh"
         onClick={() => {}}
       >
-        <span>{`Subtitleh | V${APP_VERSION}`}</span>
+        <span onClick={openLink} role="presentation">
+          {`Subtitleh | V${APP_VERSION}`}
+        </span>
       </div>
       <div
         onClick={() => dispatch(flipTheme())}
