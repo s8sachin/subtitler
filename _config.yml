@@ -1,7 +1,4 @@
 theme: jekyll-theme-cayman
-plugins:
- - jekyll-seo-tag
- 	author: s8sachin
 show_downloads: true
 download_links:
  mac: "https://github.com/s8sachin/subtitleh/releases/download/v1.3.1/Subtitleh-1.3.1.dmg"
