@@ -36,7 +36,11 @@ const MovieInfo = ({
         <>
           {fileInfo ? (
             <div className="text-center w-100">
-              {`${fileInfo === 'Corrupted' ? 'Your file maybe corrupted' : ''}`}
+              {`${
+                fileInfo === 'Corrupted'
+                  ? "Couldn't obtain info about selected file OR Your file maybe corrupted"
+                  : ''
+              }`}
             </div>
           ) : (
             <>

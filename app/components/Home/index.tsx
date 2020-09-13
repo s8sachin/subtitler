@@ -133,7 +133,7 @@ export default function Home(): JSX.Element {
                     {/** #8090b380 */}
                     <Logo color="currentColor" />
                   </div>
-                  <div className="my-1 h3 justify-content-center align-items-center d-flex px-5 dnd-area w-100">
+                  <div className="h3 mb-0 justify-content-center align-items-center d-flex px-5 dnd-area w-100">
                     {isDragActive ? (
                       <>Yup! Drop it like its hot 🔥</>
                     ) : (
