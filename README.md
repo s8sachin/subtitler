@@ -57,3 +57,26 @@ yarn cross-env DEBUG_PROD=true yarn build yarn cross-env DEBUG_PROD=true yarn st
 ## License
 
 MIT © [Sachin Srinivasan](https://github.com/s8sachin)
+
+## Thanks to
+
+- [Open subtitles](https://www.opensubtitles.org/)
+- [opensubtitles-api](https://www.npmjs.com/package/opensubtitles-api)
+- [Electron React Boilerplate](https://electron-react-boilerplate.js.org/)
+
+## Disclaimer
+
+📢📢
+
+1. The app doesn't track you down in ANY way. Not Google Analytics, or any other service. [Open a bug](https://github.com/s8sachin/subtitleh/issues/new?assignees=s8sachin&labels=bug) and let me know what do you think.
+2. The app doesn't store ANY media files ANYWHERE except on the device who use this app.
+3. This app downloads only public data available from [Open Subtitles](https://www.opensubtitles.org).
+
+⚖ 🕵
+
+## Download
+
+- Free 💰
+- No ads 📣
+
+Find your download: [https://github.com/s8sachin/subtitleh/releases/latest](https://github.com/s8sachin/subtitleh/releases/latest)
