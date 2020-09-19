@@ -166,6 +166,8 @@ export default merge(baseConfig, {
           options: {
             limit: 10000,
             mimetype: 'image/svg+xml',
+            publicPath: './dist',
+            sourceMap: true,
           },
         },
       },

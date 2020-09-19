@@ -3,7 +3,7 @@ import { Table } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { sortAsc, sortDesc } from '../../../utils/sortHelper';
 import SubsTableHeadCol from './SubsTableHeaderCol';
-import EmptySvg from '../../../../resources/empty.svg';
+import EmptySvg from '../../../utils/empty.svg';
 import LangDropdown from './LangDropdown';
 import LoadingTbody from './LoadingTbody';
 
