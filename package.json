@@ -1,7 +1,7 @@
 {
-  "name": "subtitleh",
-  "productName": "Subtitleh",
-  "version": "1.4.1",
+  "name": "subtitler",
+  "productName": "Subtitler",
+  "version": "1.5.0",
   "description": "Quickly download subtitles",
   "scripts": {
     "build": "concurrently \"yarn build-main\" \"yarn build-renderer\"",
@@ -53,8 +53,8 @@
     ]
   },
   "build": {
-    "productName": "Subtitleh",
-    "appId": "org.develar.Subtitleh",
+    "productName": "Subtitler",
+    "appId": "org.develar.Subtitler",
     "files": [
       "dist/",
       "node_modules/",
@@ -98,13 +98,13 @@
     "publish": {
       "provider": "github",
       "owner": "s8sachin",
-      "repo": "subtitleh",
+      "repo": "subtitler",
       "private": false
     }
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/s8sachin/subtitleh.git"
+    "url": "git+https://github.com/s8sachin/subtitler.git"
   },
   "author": {
     "name": "Sachin Srinivasan",
@@ -120,7 +120,7 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/s8sachin/subtitleh/issues"
+    "url": "https://github.com/s8sachin/subtitler/issues"
   },
   "keywords": [
     "electron",
@@ -134,7 +134,7 @@
     "hot",
     "reload"
   ],
-  "homepage": "https://s8sachin.github.io/subtitleh",
+  "homepage": "https://s8sachin.github.io/subtitler",
   "jest": {
     "testURL": "http://localhost/",
     "moduleNameMapper": {

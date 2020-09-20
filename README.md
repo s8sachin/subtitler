@@ -3,7 +3,7 @@
 <br>
 
 <p>
-  Subtitleh is built using <a href="https://electron-react-boilerplate.js.org/">Electron React Boilerplate</a>. That includes <a href="https://electron.atom.io/">Electron</a>, <a href="https://facebook.github.io/react/">React</a>, <a href="https://github.com/reactjs/redux">Redux</a>, <a href="https://github.com/reactjs/react-router">React Router</a>, <a href="https://webpack.github.io/docs/">Webpack</a> and <a href="https://github.com/gaearon/react-hot-loader">React Hot Loader</a> .
+  Subtitler is built using <a href="https://electron-react-boilerplate.js.org/">Electron React Boilerplate</a>. That includes <a href="https://electron.atom.io/">Electron</a>, <a href="https://facebook.github.io/react/">React</a>, <a href="https://github.com/reactjs/redux">Redux</a>, <a href="https://github.com/reactjs/react-router">React Router</a>, <a href="https://webpack.github.io/docs/">Webpack</a> and <a href="https://github.com/gaearon/react-hot-loader">React Hot Loader</a> .
 </p>
 
 <br>
@@ -68,7 +68,7 @@ MIT © [Sachin Srinivasan](https://github.com/s8sachin)
 
 📢📢
 
-1. The app doesn't track you down in ANY way. Not Google Analytics, or any other service. [Open a bug](https://github.com/s8sachin/subtitleh/issues/new?assignees=s8sachin&labels=bug) and let me know what do you think.
+1. The app doesn't track you down in ANY way. Not Google Analytics, or any other service. [Open a bug](https://github.com/s8sachin/subtitler/issues/new?assignees=s8sachin&labels=bug) and let me know what do you think.
 2. The app doesn't store ANY media files ANYWHERE except on the device who use this app.
 3. This app downloads only public data available from [Open Subtitles](https://www.opensubtitles.org).
 
@@ -79,4 +79,4 @@ MIT © [Sachin Srinivasan](https://github.com/s8sachin)
 - Free 💰
 - No ads 📣
 
-Find your download: [https://github.com/s8sachin/subtitleh/releases/latest](https://github.com/s8sachin/subtitleh/releases/latest)
+Find your download: [https://github.com/s8sachin/subtitler/releases/latest](https://github.com/s8sachin/subtitler/releases/latest)

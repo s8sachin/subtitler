@@ -36,11 +36,11 @@ export default class MenuBuilder {
     const menu = Menu.buildFromTemplate(template);
     Menu.setApplicationMenu(menu);
     app.setAboutPanelOptions({
-      applicationName: 'Subtitleh',
+      applicationName: 'Subtitler',
       applicationVersion: 'App Version',
       version: `V${APP_VERSION}`,
       iconPath: '../resources/icons/64x64.png',
-      website: 'https://s8sachin.github.io/subtitleh',
+      website: 'https://s8sachin.github.io/subtitler',
       authors: ['s8sachin'],
       // credits: 'https://s8sachin.github.io',
       // copyright: 'Copyright',
@@ -66,17 +66,17 @@ export default class MenuBuilder {
 
   buildDarwinTemplate(): MenuItemConstructorOptions[] {
     const subMenuAbout: DarwinMenuItemConstructorOptions = {
-      label: 'Subtitleh',
+      label: 'Subtitler',
       submenu: [
         {
-          label: 'About Subtitleh',
+          label: 'About Subtitler',
           selector: 'orderFrontStandardAboutPanel:',
         },
         { type: 'separator' },
         { label: 'Services', role: 'services' },
         { type: 'separator' },
         {
-          label: 'Hide Subtitleh',
+          label: 'Hide Subtitler',
           accelerator: 'Command+H',
           selector: 'hide:',
         },

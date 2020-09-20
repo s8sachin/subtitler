@@ -5,7 +5,7 @@ import { currentTheme, flipTheme } from '../../features/app/appSlice';
 import { APP_VERSION } from '../../utils/constants';
 
 const openLink = () =>
-  shell.openExternal(`https://s8sachin.github.io/subtitleh`);
+  shell.openExternal(`https://s8sachin.github.io/subtitler`);
 
 const BottomNav = () => {
   const dispatch = useDispatch();
@@ -16,11 +16,11 @@ const BottomNav = () => {
       <div
         className="cursor-pointer px-2"
         role="presentation"
-        title="About Subtitleh"
+        title="About Subtitler"
         onClick={() => {}}
       >
         <span onClick={openLink} role="presentation">
-          {`Subtitleh | V${APP_VERSION}`}
+          {`Subtitler | V${APP_VERSION}`}
         </span>
       </div>
       <div

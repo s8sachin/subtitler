@@ -1,11 +1,11 @@
 {
-  "name": "subtitleh",
-  "productName": "Subtitleh",
-  "version": "1.4.1",
+  "name": "subtitler",
+  "productName": "Subtitler",
+  "version": "1.5.0",
   "description": "Quickly download subtitles",
   "main": "./main.prod.js",
   "author": {
-    "name": "Subtitleh Maintainer",
+    "name": "Subtitler Maintainer",
     "email": "s.sachin94@gmail.com",
     "url": "https://s8sachin.github.io"
   },
