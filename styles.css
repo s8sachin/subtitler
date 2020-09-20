@@ -9,7 +9,8 @@ body {
   /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif; */
-  font-family: 'Nunito', sans-serif;
+  /* font-family: 'Nunito', sans-serif; */
+  font-family: 'Noto Sans JP', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 100%;
@@ -22,6 +23,8 @@ body {
 .h-100vh {
   height: 100vh !important;
 }
+
+
 
 .border-capsule {
   border-radius: 35px;
@@ -43,8 +46,26 @@ body {
   background-color: #425b92b8;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 992px) {
+  .display-5 {
+    font-size: calc(1.5rem + 3.9vw);
+  }
+
   .display-3 {
-      font-size: calc(1.575rem + 3.9vw);
+    font-size: calc(1.5rem + 3.9vw);
+  }
+
+  .hero-section {
+    margin-top: 10vh;
+  }
+}
+
+@media (min-width: 992px) {
+  .display-5 {
+    font-size: 3rem;
+  }
+
+  .hero-section {
+    height: calc(100vh - 66px);
   }
 }
