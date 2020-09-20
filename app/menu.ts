@@ -38,7 +38,7 @@ export default class MenuBuilder {
     app.setAboutPanelOptions({
       applicationName: 'Subtitler',
       applicationVersion: 'App Version',
-      version: `V${APP_VERSION}`,
+      version: `v${APP_VERSION}`,
       iconPath: '../resources/icons/64x64.png',
       website: 'https://s8sachin.github.io/subtitler',
       authors: ['s8sachin'],

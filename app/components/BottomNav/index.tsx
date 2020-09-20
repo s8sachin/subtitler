@@ -20,7 +20,7 @@ const BottomNav = () => {
         onClick={() => {}}
       >
         <span onClick={openLink} role="presentation">
-          {`Subtitler | V${APP_VERSION}`}
+          {`Subtitler | v${APP_VERSION}`}
         </span>
       </div>
       <div
