@@ -46,6 +46,12 @@ body {
   background-color: #425b92b8;
 }
 
+.bottom-navbar {
+  /* min-height: 200px; */
+  background-color: #232c39;
+  color: white;
+}
+
 @media (max-width: 992px) {
   .display-5 {
     font-size: calc(1.5rem + 3.9vw);
