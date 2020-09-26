@@ -20,8 +20,13 @@
     <meta name="publisher" content="Subtitler" />
     <!-- <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"> -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <link href="styles.css" rel="stylesheet" type="text/css" media="all" />
   </head>
 
@@ -46,6 +51,87 @@
         </div>
       </div>
 
+      <div class="row justify-content-center my-3">
+        <h1 class="display-5 font-weight-bold">FAQ</h1>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8">
+          <div class="faq-accordion">
+
+            <div class="card mb-2 mb-md-3">
+              <div href="#accordion-1" data-toggle="collapse" aria-controls="accordion-1" role="button" aria-expanded="false" class="p-3 p-md-4 faq-item collapsed cursor-pointer user-select-none">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h6 class="mb-0 mr-2 font-weight-bold">How much does it cost ?</h6>
+                </div>
+              </div>
+              <div class="collapse" id="accordion-1" style="">
+                <div class="px-3 px-md-4 pb-3 pb-md-4">
+                  Subtitler will always be completely free to use. The project is completely
+                  open source and we welcome contributions if you'd like to
+                  help out!
+                </div>
+              </div>
+            </div>
+
+            <div class="card mb-2 mb-md-3">
+              <div href="#accordion-2" data-toggle="collapse" aria-controls="accordion-2" role="button" aria-expanded="false" class="p-3 p-md-4 faq-item collapsed cursor-pointer user-select-none">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h6 class="mb-0 mr-2 font-weight-bold">How does it work ?</h6>
+                </div>
+              </div>
+              <div class="collapse" id="accordion-2" style="">
+                <div class="px-3 px-md-4 pb-3 pb-md-4">
+                  Just select video file and select/click on one of item in the list, the subtitle will be downloaded and renamed at the video's location.
+                  Play the video and subtitle should work automatically.
+                </div>
+              </div>
+            </div>
+
+            <div class="card mb-2 mb-md-3">
+              <div href="#accordion-3" data-toggle="collapse" aria-controls="accordion-3" role="button" aria-expanded="false" class="p-3 p-md-4 faq-item collapsed cursor-pointer user-select-none">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h6 class="mb-0 mr-2 font-weight-bold">Where are these subtitles from ?</h6>
+                </div>
+              </div>
+              <div class="collapse" id="accordion-3" style="">
+                <div class="px-3 px-md-4 pb-3 pb-md-4">
+                  All the subtitles and IMDb title info are fetched from <a href="https://opensubtitles.org" target="_blank">Open subtitles</a> API.
+                </div>
+              </div>
+            </div>
+
+            <div class="card mb-2 mb-md-3">
+              <div href="#accordion-4" data-toggle="collapse" aria-controls="accordion-4" role="button" aria-expanded="false" class="p-3 p-md-4 faq-item collapsed cursor-pointer user-select-none">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h6 class="mb-0 mr-2 font-weight-bold">Getting wrong subs & info, what should I do ?</h6>
+                </div>
+              </div>
+              <div class="collapse" id="accordion-4" style="">
+                <div class="px-3 px-md-4 pb-3 pb-md-4">
+                  Since all info are fetched from Open subtitles,
+                  Some Info might not be accurate.
+                  Please consider contributing info to <a href="https://opensubtitles.org" target="_blank">Open subtitles</a>.
+                </div>
+              </div>
+            </div>
+
+            <div class="card mb-2 mb-md-3">
+              <div href="#accordion-5" data-toggle="collapse" aria-controls="accordion-5" role="button" aria-expanded="false" class="p-3 p-md-4 faq-item collapsed cursor-pointer user-select-none">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h6 class="mb-0 mr-2 font-weight-bold">Does Subtitler track anything from my PC ?</h6>
+                </div>
+              </div>
+              <div class="collapse" id="accordion-5" style="">
+                <div class="px-3 px-md-4 pb-3 pb-md-4">
+                  No, we don't track anything from your PC. Be sure to go through <a href="https://www.opensubtitles.org/en/disclaimer" target="_blank">Open subtitles Disclaimer</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
       <div id="downloads" class="row justify-content-center align-items-center hero-section">
         <div class="col-xs-12 col-md-6 my-3">
           <img class="img-fluid rounded p-5" src="./subtitler-img.png" />
@@ -54,15 +140,16 @@
           <h1 class="display-5 font-weight-bold">Get it today</h1>
           <div class="font-weight-bold text-secondary">Subtitler is available today on Mac OS, Windows and Linux.</div>
           <div class="mt-3 d-flex justify-content-center">
-            <a href="https://github.com/s8sachin/subtitler/releases/download/1.5.0/Subtitler-1.5.0.dmg" class="btn btn-custom text-white mx-2"><i class="fab fa-apple"></i> Mac</a>
-            <a href="https://github.com/s8sachin/subtitler/releases/download/1.5.0/Subtitler.Setup.1.5.0.exe" class="btn btn-custom text-white mx-2"><i class="fab fa-windows"></i> Windows</a>
-            <a href="https://github.com/s8sachin/subtitler/releases/download/1.5.0/Subtitler-1.5.0.AppImage" class="btn btn-custom text-white mx-2"><i class="fab fa-linux"></i> Linux</a>
+            <a href="https://github.com/s8sachin/subtitler/releases/download/v1.5.0/Subtitler-1.5.0.dmg" class="btn btn-custom text-white mx-2"><i class="fab fa-apple"></i> Mac</a>
+            <a href="https://github.com/s8sachin/subtitler/releases/download/v1.5.0/Subtitler-Setup-1.5.0.exe" class="btn btn-custom text-white mx-2"><i class="fab fa-windows"></i> Windows</a>
+            <a href="https://github.com/s8sachin/subtitler/releases/download/v1.5.0/Subtitler-1.5.0.AppImage" class="btn btn-custom text-white mx-2"><i class="fab fa-linux"></i> Linux</a>
           </div>
           <a href="https://github.com/s8sachin/subtitler/releases" target="_blank" class="btn btn-link text-inherit mt-3 mx-2">All releases <i class="ml-1 fas fa-external-link-alt"></i></a>
         </div>
       </div>
       <!-- <div class="w-100 text-center">Made in ❤️ with Javascript</div> -->
     </div>
+
     <div class="bottom-navbar px-3">
       <!-- <div class="d-flex justify-content-between align-items-center" style="min-height: 200px;">
         <div><a href="https://github.com/s8sachin/subtitler" target="_blank" class="btn btn-link text-inherit mt-3 mx-2">Source code</a></div>
@@ -85,7 +172,12 @@
 function takeToDownload(e) {
   e.preventDefault();
   document
-      .getElementById("downloads")
-      .scrollIntoView({ behavior: "smooth" });
+    .getElementById("downloads")
+    .scrollIntoView({ behavior: "smooth" });
 }
+
+$('.faq-item').on('click', () => {
+  $('.collapse').collapse('hide');
+})
+
 </script>

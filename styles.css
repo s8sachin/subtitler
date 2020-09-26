@@ -24,7 +24,13 @@ body {
   height: 100vh !important;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
 
+.content {
+  transition: visibility 0s linear 0.33s, opacity 0.33s linear;
+}
 
 .border-capsule {
   border-radius: 35px;
@@ -50,6 +56,18 @@ body {
   /* min-height: 200px; */
   background-color: #232c39;
   color: white;
+}
+
+.faq-item {
+  color: #425b92;
+}
+
+.faq-item:hover {
+  color: #425b92 !important;
+}
+
+.faq-item.collapsed{
+  color: inherit;
 }
 
 @media (max-width: 992px) {
