@@ -1,4 +1,4 @@
-<img src="internals/img/erb-banner.png" width="100%" />
+<img src="internals/img/subtitler-banner.png" width="100%" />
 
 <br>
 
