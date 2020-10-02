@@ -1,11 +1,11 @@
-<img src="internals/img/erb-banner.png" width="100%" />
+<img src="internals/img/subtitler-banner.png" width="100%" />
 
 <br>
 
 <p>
   Subtitler is built using <a href="https://electron-react-boilerplate.js.org/">Electron React Boilerplate</a>. That includes <a href="https://electron.atom.io/">Electron</a>, <a href="https://facebook.github.io/react/">React</a>, <a href="https://github.com/reactjs/redux">Redux</a>, <a href="https://github.com/reactjs/react-router">React Router</a>, <a href="https://webpack.github.io/docs/">Webpack</a> and <a href="https://github.com/gaearon/react-hot-loader">React Hot Loader</a> .
 </p>
-  
+
 <br>
 <hr />
 <br />
@@ -18,7 +18,7 @@ First, clone the repo via git and install dependencies:
 yarn
 ```
 
-## Run Development
+## Run Developmentq2
 
 Start the app in the `dev` environment. This starts the renderer process in [**hot-module-replacement**](https://webpack.js.org/guides/hmr-react/) mode and starts a webpack dev server that sends hot updates to the renderer process:
 
