@@ -52,7 +52,7 @@ yarn cross-env DEBUG_PROD=true yarn build yarn cross-env DEBUG_PROD=true yarn st
 
 ## Maintainers
 
-- [Sachin Srinivasan](https://github.com/amilajack)
+- [Sachin Srinivasan](https://github.com/s8sachin)
 
 ## License
 
