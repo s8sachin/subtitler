@@ -77,13 +77,16 @@ export default function Home(): JSX.Element {
          * Right file but wrong fileName, so reconstruct file name and search for subtitles again
          */
         if (movieInfo.metadata && Object.keys(resp).length === 0) {
-          const { title, episode_title: epTitle = '' } = movieInfo.metadata;
+          const {
+            title = '',
+            episode_title: epTitle = '',
+          } = movieInfo.metadata;
           const name = `${title} ${epTitle}`;
           resp = await OpenSubtitles.search(getSearchObjBsedOnFile({ name }));
         }
 
         /**
-         * Right file but wrong fileName
+         * After all these and still no results
          */
         if (Object.keys(resp).length === 0) movieInfo.fileInfo = 'No results';
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import React from 'react';
 import { shell } from 'electron';
 import { Button } from 'react-bootstrap';
@@ -14,7 +15,20 @@ const MovieInfo = ({
   isLoading: boolean;
 }) => {
   const { metadata = {}, fileInfo } = titleInfo;
-  const imdbId = metadata && (metadata.show_imdbid || metadata.imdbid);
+  const {
+    title = '',
+    cover = '',
+    rating = 0,
+    year = '',
+    imdbid = '',
+    show_imdbid = '',
+    episode_title = '',
+    season = 0,
+    episode = 0,
+    duration = '',
+    cast,
+  } = metadata;
+  const imdbId = metadata && (show_imdbid || imdbid);
   return (
     <div style={{ width: 180 }} className="overflow-y-scroll">
       {isLoading ? (
@@ -46,7 +60,7 @@ const MovieInfo = ({
             <>
               <img
                 className="img-fluid rounded-top cursor-pointer border-customDarkBlue"
-                src={metadata.cover}
+                src={cover}
                 role="presentation"
                 onClick={() => gotoImdb(imdbId)}
                 alt=""
@@ -57,7 +71,7 @@ const MovieInfo = ({
                 role="presentation"
                 onClick={() => gotoImdb(imdbId)}
               >
-                {`IMDb Rating: ${metadata.rating}/10`}
+                {`IMDb Rating: ${rating}/10`}
               </div>
               <div className="text-center my-1">
                 <Button
@@ -65,44 +79,46 @@ const MovieInfo = ({
                   onClick={() => gotoImdb(imdbId)}
                   className="outline-0 box-shadow-none text-inherit p-0"
                 >
-                  {`${metadata.title} (${metadata.year})`}
+                  {`${title} (${year})`}
                 </Button>
               </div>
-              {metadata.episode_title && (
+              {episode_title && (
                 <div className="text-center my-1">
                   <Button
                     variant="link"
-                    onClick={() => gotoImdb(metadata.imdbid)}
+                    onClick={() => gotoImdb(imdbid)}
                     className="outline-0 box-shadow-none text-inherit p-0"
                   >
-                    {`${metadata.episode_title} - S${metadata.season} E${metadata.episode}`}
+                    {`${episode_title} - S${season} E${episode}`}
                   </Button>
                 </div>
               )}
               <div style={{ fontSize: 13 }} className="my-1">
-                <div>
-                  <b>
-                    <u>Duration: </u>
-                  </b>
-                  {`${metadata.duration}`}
-                </div>
+                {duration && (
+                  <div>
+                    <b>
+                      <u>Duration: </u>
+                    </b>
+                    {`${duration}`}
+                  </div>
+                )}
                 {/* <div>
-          <b>
-            <u>Votes: </u>
-          </b>
-          {`${metadata.votes}`}
-        </div> */}
-                <div>
                   <b>
-                    <u>Starring:</u>
+                    <u>Votes: </u>
                   </b>
-                  <br />
-                  {metadata.cast && (
+                  {`${metadata.votes}`}
+                </div> */}
+                {cast && (
+                  <div>
+                    <b>
+                      <u>Starring:</u>
+                    </b>
+                    <br />
                     <span className="font-weight-light text-inherit">
-                      {Object.values(metadata.cast).slice(0, 5).join(', ')}
+                      {Object.values(cast).slice(0, 5).join(', ')}
                     </span>
-                  )}
-                </div>
+                  </div>
+                )}
               </div>
             </>
           )}
