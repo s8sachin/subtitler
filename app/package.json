@@ -1,7 +1,7 @@
 {
   "name": "subtitler",
   "productName": "Subtitler",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "Quickly download subtitles",
   "main": "./main.prod.js",
   "author": {
