@@ -213,6 +213,7 @@ export default merge(baseConfig, {
       NODE_ENV: 'production',
       DEBUG_PROD: false,
       E2E_BUILD: false,
+      O_S_USERNAME: process.env.O_S_USERNAME,
     }),
 
     new MiniCssExtractPlugin({
