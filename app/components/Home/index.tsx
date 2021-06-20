@@ -11,7 +11,12 @@ import SubsTable from './SubsTable';
 import Logo from '../Icons/Logo';
 import MovieInfo from './MovieInfo';
 
-const OpenSubtitles = new OS({ useragent: 'UserAgent', ssl: true });
+const OpenSubtitles = new OS({
+  useragent: 'UserAgent',
+  ssl: true,
+  username: process.env.O_S_USERNAME,
+  password: 'Password@1234',
+});
 
 const getSearchObjBsedOnFile = (file: any) => {
   return {

@@ -27,6 +27,7 @@ jobs:
         uses: GabrielBB/xvfb-action@v1.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          O_S_USERNAME: ${{ secrets.O_S_USERNAME }}
         with:
           run: |
             yarn package-ci
