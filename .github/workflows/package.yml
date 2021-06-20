@@ -30,4 +30,4 @@ jobs:
           O_S_USERNAME: ${{ secrets.O_S_USERNAME }}
         with:
           run: |
-            yarn package-ci
+            yarn cross-env O_S_USERNAME=$O_S_USERNAME yarn package-ci
