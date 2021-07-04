@@ -8,6 +8,12 @@
 
 <br>
 <hr />
+
+<p align="center">
+  <a href="https://youtu.be/3-ikI6ZxBZA" target="_blank"><img src="internals/img/subtitler-intro.gif"></a>
+</p>
+
+<hr />
 <br />
 
 ## Install
