@@ -75,7 +75,7 @@ MIT © [Sachin Srinivasan](https://github.com/s8sachin)
 
 ## Disclaimer
 
-📢📢
+📢📢📢
 
 1. The app doesn't track you down in ANY way. Not Google Analytics, or any other service. [Open a bug](https://github.com/s8sachin/subtitler/issues/new?assignees=s8sachin&labels=bug) and let me know what do you think.
 2. The app doesn't store ANY media files ANYWHERE except on the device who use this app.
